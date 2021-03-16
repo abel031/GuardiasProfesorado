@@ -19,6 +19,21 @@ public class UtilesHibernate {
 		this.usr = usr;
 		this.pwd = pwd;
 	}
+	
+	public UtilesHibernate() {
+	}
+
+	static {
+		try {
+			Configuration configuration = new Configuration().configure();
+			/*StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().
+			applySettings(configuration.getProperties());*/
+			SF = configuration.configure().buildSessionFactory();
+		} catch (Throwable e) {
+			System.err.println("Initial SessionFactory cration failed."+e);
+			throw new ExceptionInInitializerError(e);
+		}
+	}
 
 	private void conectar(String host,String db,String usr,String pwd) {
 	    Configuration config = new Configuration();
