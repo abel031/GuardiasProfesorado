@@ -1,6 +1,7 @@
 package pojos;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -16,16 +17,19 @@ public class Aula implements Serializable{
 	private String nombre;
 	private Integer nivel;
 	private String codigo;
+	private List<Actividad> actividades;
 	
 	public Aula() {
 	}
 
-	public Aula(Integer nunAula, String abreviatura, String nombre, Integer nivel, String codigo) {
+	public Aula(Integer nunAula, String abreviatura, String nombre, Integer nivel, String codigo,
+			List<Actividad> actividades) {
 		this.nunAula = nunAula;
 		this.abreviatura = abreviatura;
 		this.nombre = nombre;
 		this.nivel = nivel;
 		this.codigo = codigo;
+		this.actividades = actividades;
 	}
 
 	public Integer getNunAula() {
@@ -66,6 +70,14 @@ public class Aula implements Serializable{
 
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
+	}
+	
+	public List<Actividad> getActividades() {
+		return actividades;
+	}
+
+	public void setActividades(List<Actividad> actividades) {
+		this.actividades = actividades;
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package pojos;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,20 +18,22 @@ public class Asignatura implements Serializable{
 	private String nivel;
 	private String codigo;
 	private String curso;
+	private List<Actividad> actividades;
 	
 	public Asignatura() {
 	}
 	
 	public Asignatura(Integer numAsignatura, String abreviatura, String nombre, String nivel, String codigo,
-			String curso) {
+			String curso, List<Actividad> actividades) {
 		this.numAsignatura = numAsignatura;
 		this.abreviatura = abreviatura;
 		this.nombre = nombre;
 		this.nivel = nivel;
 		this.codigo = codigo;
 		this.curso = curso;
+		this.actividades = actividades;
 	}
-	
+
 	public Integer getNumAsignatura() {
 		return numAsignatura;
 	}
@@ -77,6 +80,14 @@ public class Asignatura implements Serializable{
 
 	public void setCurso(String curso) {
 		this.curso = curso;
+	}
+
+	public List<Actividad> getActividades() {
+		return actividades;
+	}
+
+	public void setActividades(List<Actividad> actividades) {
+		this.actividades = actividades;
 	}
 
 	@Override

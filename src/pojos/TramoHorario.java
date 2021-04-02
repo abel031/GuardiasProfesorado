@@ -2,6 +2,7 @@ package pojos;
 
 import java.io.Serializable;
 import java.sql.Time;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -24,18 +25,20 @@ public class TramoHorario implements Serializable{
 	private Time horaInicio;
 	@JoinColumn(name="hora_final")
 	private Time horaFinal;
+	private List<Actividad> actividades;
 	
 	public TramoHorario() {
 	}
 
 	public TramoHorario(Integer numTramo, Integer codigo, Integer numeroDia, Integer numeroHora, Time horaInicio,
-			Time horaFinal) {
+			Time horaFinal, List<Actividad> actividades) {
 		this.numTramo = numTramo;
 		this.codigo = codigo;
 		this.numeroDia = numeroDia;
 		this.numeroHora = numeroHora;
 		this.horaInicio = horaInicio;
 		this.horaFinal = horaFinal;
+		this.actividades = actividades;
 	}
 
 	public Integer getNumTramo() {
@@ -84,6 +87,14 @@ public class TramoHorario implements Serializable{
 
 	public void setHoraFinal(Time horaFinal) {
 		this.horaFinal = horaFinal;
+	}
+
+	public List<Actividad> getActividades() {
+		return actividades;
+	}
+
+	public void setActividades(List<Actividad> actividades) {
+		this.actividades = actividades;
 	}
 
 	@Override

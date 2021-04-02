@@ -1,6 +1,7 @@
 package pojos;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,19 +21,21 @@ public class Grupo implements Serializable{
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="num_tutor")
 	private Profesor tutor;
+	private List<Actividad> actividades;
 	
 	public Grupo() {
 	}
 	
-	public Grupo(Integer numGrupo, String abreviatura, String nombre, String codigo, Profesor tutor) {
+	public Grupo(Integer numGrupo, String abreviatura, String nombre, String codigo, Profesor tutor,
+			List<Actividad> actividades) {
 		this.numGrupo = numGrupo;
 		this.abreviatura = abreviatura;
 		this.nombre = nombre;
 		this.codigo = codigo;
 		this.tutor = tutor;
+		this.actividades = actividades;
 	}
 
-	
 	public Integer getNumGrupo() {
 		return numGrupo;
 	}
@@ -71,6 +74,14 @@ public class Grupo implements Serializable{
 
 	public void setTutor(Profesor tutor) {
 		this.tutor = tutor;
+	}
+	
+	public List<Actividad> getActividades() {
+		return actividades;
+	}
+
+	public void setActividades(List<Actividad> actividades) {
+		this.actividades = actividades;
 	}
 
 	@Override

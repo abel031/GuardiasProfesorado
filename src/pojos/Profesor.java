@@ -1,6 +1,7 @@
 package pojos;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -16,16 +17,22 @@ public class Profesor implements Serializable{
 	private String nombre;
 	private String nivel;
 	private Integer codigo;
+	@JoinColumn(name="num_usuario")
+	private Usuario usuario;
+	private List<Actividad> actividades;
 	
 	public Profesor() {
 	}
-	
-	public Profesor(Integer numProfesor, String abreviatura, String nombre, String nivel, Integer codigo) {
+
+	public Profesor(Integer numProfesor, String abreviatura, String nombre, String nivel, Integer codigo,
+			Usuario usuario, List<Actividad> actividades) {
 		this.numProfesor = numProfesor;
 		this.abreviatura = abreviatura;
 		this.nombre = nombre;
 		this.nivel = nivel;
 		this.codigo = codigo;
+		this.usuario = usuario;
+		this.actividades = actividades;
 	}
 
 	public Integer getNumProfesor() {
@@ -68,11 +75,28 @@ public class Profesor implements Serializable{
 		this.codigo = codigo;
 	}
 	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public List<Actividad> getActividades() {
+		return actividades;
+	}
+
+	public void setActividades(List<Actividad> actividades) {
+		this.actividades = actividades;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((abreviatura == null) ? 0 : abreviatura.hashCode());
+		result = prime * result + ((actividades == null) ? 0 : actividades.hashCode());
 		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
 		result = prime * result + ((nivel == null) ? 0 : nivel.hashCode());
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
@@ -93,6 +117,11 @@ public class Profesor implements Serializable{
 			if (other.abreviatura != null)
 				return false;
 		} else if (!abreviatura.equals(other.abreviatura))
+			return false;
+		if (actividades == null) {
+			if (other.actividades != null)
+				return false;
+		} else if (!actividades.equals(other.actividades))
 			return false;
 		if (codigo == null) {
 			if (other.codigo != null)
