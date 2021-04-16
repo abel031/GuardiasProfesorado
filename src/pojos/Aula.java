@@ -3,9 +3,12 @@ package pojos;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Aula implements Serializable{
@@ -17,6 +20,7 @@ public class Aula implements Serializable{
 	private String nombre;
 	private Integer nivel;
 	private String codigo;
+	@OneToMany (cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "actividad")
 	private List<Actividad> actividades;
 	
 	public Aula() {

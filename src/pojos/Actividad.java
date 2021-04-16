@@ -2,9 +2,12 @@ package pojos;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Actividad implements Serializable{
@@ -12,14 +15,19 @@ public class Actividad implements Serializable{
 	@Id
 	@JoinColumn(name="num_actividad")
 	private Integer numActividad;
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="num_tramo")
 	private TramoHorario tramo;
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="num_grupo")
 	private Grupo grupo;
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="num_aula")
 	private Aula aula;
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="num_asignatura")
 	private Asignatura asignatura;
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="num_profesor")
 	private Profesor profesor;
 	

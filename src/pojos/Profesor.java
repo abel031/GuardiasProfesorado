@@ -3,9 +3,13 @@ package pojos;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Profesor implements Serializable{
@@ -17,8 +21,10 @@ public class Profesor implements Serializable{
 	private String nombre;
 	private String nivel;
 	private Integer codigo;
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="num_usuario")
 	private Usuario usuario;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "actividad")
 	private List<Actividad> actividades;
 	
 	public Profesor() {

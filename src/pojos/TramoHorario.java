@@ -4,9 +4,12 @@ import java.io.Serializable;
 import java.sql.Time;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +28,7 @@ public class TramoHorario implements Serializable{
 	private Time horaInicio;
 	@JoinColumn(name="hora_final")
 	private Time horaFinal;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "actividad")
 	private List<Actividad> actividades;
 	
 	public TramoHorario() {

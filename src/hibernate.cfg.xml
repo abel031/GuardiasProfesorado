@@ -28,6 +28,13 @@
 		
 		<!-- Clases Mapeadas -->
 		<mapping class="pojos.Equipo"/>
+		<mapping class="pojos.Actividad"/>
+		<mapping class="pojos.Asignatura"/>
+		<mapping class="pojos.Aula"/>
+		<mapping class="pojos.Grupo"/>
+		<mapping class="pojos.Profesor"/>
+		<mapping class="pojos.TramoHorario"/>
+		<mapping class="pojos.Usuario"/>
 		
 	</session-factory>
 </hibernate-configuration>

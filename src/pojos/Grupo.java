@@ -3,10 +3,12 @@ package pojos;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -21,6 +23,7 @@ public class Grupo implements Serializable{
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="num_tutor")
 	private Profesor tutor;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "actividad")
 	private List<Actividad> actividades;
 	
 	public Grupo() {
