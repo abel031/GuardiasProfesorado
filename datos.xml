@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<CENTRO nombre_centro="IES Consuelo Aranda Alberic (València)" autor="HORW" fecha="12/03/2019 13:23:26">
+    <DATOS>
+        <ASIGNATURAS tot_as="287">
+            <ASIGNATURA num_int_as="1">
+                <ABREVIATURA>CLL</ABREVIATURA>
+                <NOMBRE>Castellano: lengua y literatura</NOMBRE>
+                <NIVEL>1E</NIVEL>
+                <CODIGO>LCLLOMCE</CODIGO>
+                <CURSO>1ESO</CURSO>
+            </ASIGNATURA>
+        </ASIGNATURAS>
+        <GRUPOS tot_gr="38">
+            <GRUPO num_int_gr="1">
+                <ABREVIATURA>1BACA</ABREVIATURA>
+                <NOMBRE>1BA.CN.TC.AN.REL</NOMBRE>
+                <CODIGO>1BACA</CODIGO>
+            </GRUPO>
+        </GRUPOS>
+        <AULAS tot_au="63">
+            <AULA num_int_au="2">
+                <ABREVIATURA>001</ABREVIATURA>
+                <NOMBRE>001</NOMBRE>
+                <NIVEL/>
+                <CODIGO/>
+            </AULA>
+        </AULAS>
+        <PROFESORES tot_pr="76">
+            <PROFESOR num_int_pr="2">
+                <ABREVIATURA>RoCal</ABREVIATURA>
+                <NOMBRE>CALABUIG I ORTIZ, ROBERT</NOMBRE>
+                <NIVEL>INF</NIVEL>
+                <CODIGO>111111111A</CODIGO>
+                <NUM_GR_TUTORIA_PRINCIPAL>41</NUM_GR_TUTORIA_PRINCIPAL>
+            </PROFESOR>
+        </PROFESORES>
+        <TRAMOS_HORARIOS tot_tr="45">
+            <TRAMO num_tr="1">
+                <CODIGO>5</CODIGO>
+                <NUMERO_DIA>1</NUMERO_DIA>
+                <NUMERO_HORA>1</NUMERO_HORA>
+                <HORA_INICIO> 8:00</HORA_INICIO>
+                <HORA_FINAL> 8:55</HORA_FINAL>
+            </TRAMO>
+        </TRAMOS_HORARIOS>
+    </DATOS>
+    <HORARIOS>
+        <HORARIOS_PROFESORES>
+            <HORARIO_PROF hor_num_int_pr="77" tot_un="25" tot_ac="25">
+                <ACTIVIDAD num_act="1" num_un="46">
+                    <TRAMO>34</TRAMO>
+                    <ASIGNATURA>136</ASIGNATURA>
+                    <AULA>20</AULA>
+                    <GRUPOS_ACTIVIDAD tot_gr_act="2">
+                        <GRUPO>5</GRUPO>
+                        <GRUPO>6</GRUPO>
+                    </GRUPOS_ACTIVIDAD>
+                </ACTIVIDAD>
+                <ACTIVIDAD num_act="2" num_un="47">
+                    <TRAMO>42</TRAMO>
+                    <ASIGNATURA>136</ASIGNATURA>
+                    <AULA>19</AULA>
+                    <GRUPOS_ACTIVIDAD tot_gr_act="2">
+                        <GRUPO>5</GRUPO>
+                        <GRUPO>6</GRUPO>
+                    </GRUPOS_ACTIVIDAD>
+                </ACTIVIDAD>
+                <ACTIVIDAD num_act="3" num_un="48">
+                    <TRAMO>24</TRAMO>
+                    <ASIGNATURA>136</ASIGNATURA>
+                    <AULA>19</AULA>
+                    <GRUPOS_ACTIVIDAD tot_gr_act="2">
+                        <GRUPO>5</GRUPO>
+                        <GRUPO>6</GRUPO>
+                    </GRUPOS_ACTIVIDAD>
+                </ACTIVIDAD>
+                <ACTIVIDAD num_act="4" num_un="49">
+                    <TRAMO>16</TRAMO>
+                    <ASIGNATURA>136</ASIGNATURA>
+                    <AULA>19</AULA>
+                    <GRUPOS_ACTIVIDAD tot_gr_act="2">
+                        <GRUPO>5</GRUPO>
+                        <GRUPO>6</GRUPO>
+                    </GRUPOS_ACTIVIDAD>
+                </ACTIVIDAD>
+                <ACTIVIDAD num_act="5" num_un="50">
+                    <TRAMO>33</TRAMO>
+                    <ASIGNATURA>136</ASIGNATURA>
+                    <AULA>19</AULA>
+                    <GRUPOS_ACTIVIDAD tot_gr_act="2">
+                        <GRUPO>7</GRUPO>
+                        <GRUPO>8</GRUPO>
+                    </GRUPOS_ACTIVIDAD>
+                </ACTIVIDAD>
+                <ACTIVIDAD num_act="6" num_un="51">
+                    <TRAMO>3</TRAMO>
+                    <ASIGNATURA>136</ASIGNATURA>
+                    <AULA>19</AULA>
+                    <GRUPOS_ACTIVIDAD tot_gr_act="2">
+                        <GRUPO>7</GRUPO>
+                        <GRUPO>8</GRUPO>
+                    </GRUPOS_ACTIVIDAD>
+                </ACTIVIDAD>
+                <ACTIVIDAD num_act="7" num_un="52">
+                    <TRAMO>15</TRAMO>
+                    <ASIGNATURA>136</ASIGNATURA>
+                    <AULA>19</AULA>
+                    <GRUPOS_ACTIVIDAD tot_gr_act="2">
+                        <GRUPO>7</GRUPO>
+                        <GRUPO>8</GRUPO>
+                    </GRUPOS_ACTIVIDAD>
+                </ACTIVIDAD>
+                <ACTIVIDAD num_act="8" num_un="53">
+                    <TRAMO>20</TRAMO>
+                    <ASIGNATURA>136</ASIGNATURA>
+                    <AULA>17</AULA>
+                    <GRUPOS_ACTIVIDAD tot_gr_act="2">
+                        <GRUPO>7</GRUPO>
+                        <GRUPO>8</GRUPO>
+                    </GRUPOS_ACTIVIDAD>
+                </ACTIVIDAD>
+                <ACTIVIDAD num_act="9" num_un="121">
+                    <TRAMO>32</TRAMO>
+                    <ASIGNATURA>119</ASIGNATURA>
+                    <AULA>54</AULA>
+                    <GRUPOS_ACTIVIDAD tot_gr_act="2">
+                        <GRUPO>13</GRUPO>
+                        <GRUPO>14</GRUPO>
+                    </GRUPOS_ACTIVIDAD>
+                </ACTIVIDAD>
+                <ACTIVIDAD num_act="10" num_un="122">
+                    <TRAMO>7</TRAMO>
+                    <ASIGNATURA>119</ASIGNATURA>
+                    <AULA>19</AULA>
+                    <GRUPOS_ACTIVIDAD tot_gr_act="2">
+                        <GRUPO>13</GRUPO>
+                        <GRUPO>14</GRUPO>
+                    </GRUPOS_ACTIVIDAD>
+                </ACTIVIDAD>
+                <ACTIVIDAD num_act="11" num_un="123">
+                    <TRAMO>14</TRAMO>
+                    <ASIGNATURA>119</ASIGNATURA>
+                    <AULA>19</AULA>
+                    <GRUPOS_ACTIVIDAD tot_gr_act="2">
+                        <GRUPO>13</GRUPO>
+                        <GRUPO>14</GRUPO>
+                    </GRUPOS_ACTIVIDAD>
+                </ACTIVIDAD>
+                <ACTIVIDAD num_act="12" num_un="124">
+                    <TRAMO>21</TRAMO>
+                    <ASIGNATURA>119</ASIGNATURA>
+                    <AULA>19</AULA>
+                    <GRUPOS_ACTIVIDAD tot_gr_act="2">
+                        <GRUPO>13</GRUPO>
+                        <GRUPO>14</GRUPO>
+                    </GRUPOS_ACTIVIDAD>
+                </ACTIVIDAD>
+                <ACTIVIDAD num_act="13" num_un="741">
+                    <TRAMO>2</TRAMO>
+                    <ASIGNATURA>74</ASIGNATURA>
+                    <AULA>1</AULA>
+                    <GRUPOS_ACTIVIDAD tot_gr_act="0">
+                    </GRUPOS_ACTIVIDAD>
+                </ACTIVIDAD>
+                <ACTIVIDAD num_act="14" num_un="763">
+                    <TRAMO>12</TRAMO>
+                    <ASIGNATURA>201</ASIGNATURA>
+                    <AULA>1</AULA>
+                    <GRUPOS_ACTIVIDAD tot_gr_act="1">
+                        <GRUPO>24</GRUPO>
+                    </GRUPOS_ACTIVIDAD>
+                </ACTIVIDAD>
+                <ACTIVIDAD num_act="15" num_un="856">
+                    <TRAMO>18</TRAMO>
+                    <ASIGNATURA>93</ASIGNATURA>
+                    <AULA>19</AULA>
+                    <GRUPOS_ACTIVIDAD tot_gr_act="2">
+                        <GRUPO>17</GRUPO>
+                        <GRUPO>18</GRUPO>
+                    </GRUPOS_ACTIVIDAD>
+                </ACTIVIDAD>
+                <ACTIVIDAD num_act="16" num_un="857">
+                    <TRAMO>43</TRAMO>
+                    <ASIGNATURA>93</ASIGNATURA>
+                    <AULA>19</AULA>
+                    <GRUPOS_ACTIVIDAD tot_gr_act="2">
+                        <GRUPO>17</GRUPO>
+                        <GRUPO>18</GRUPO>
+                    </GRUPOS_ACTIVIDAD>
+                </ACTIVIDAD>
+                <ACTIVIDAD num_act="17" num_un="858">
+                    <TRAMO>36</TRAMO>
+                    <ASIGNATURA>93</ASIGNATURA>
+                    <AULA>20</AULA>
+                    <GRUPOS_ACTIVIDAD tot_gr_act="2">
+                        <GRUPO>17</GRUPO>
+                        <GRUPO>18</GRUPO>
+                    </GRUPOS_ACTIVIDAD>
+                </ACTIVIDAD>
+                <ACTIVIDAD num_act="18" num_un="910">
+                    <TRAMO>6</TRAMO>
+                    <ASIGNATURA>202</ASIGNATURA>
+                    <AULA>20</AULA>
+                    <GRUPOS_ACTIVIDAD tot_gr_act="1">
+                        <GRUPO>35</GRUPO>
+                    </GRUPOS_ACTIVIDAD>
+                </ACTIVIDAD>
+                <ACTIVIDAD num_act="19" num_un="941">
+                    <TRAMO>23</TRAMO>
+                    <ASIGNATURA>75</ASIGNATURA>
+                    <AULA>1</AULA>
+                    <GRUPOS_ACTIVIDAD tot_gr_act="1">
+                        <GRUPO>22</GRUPO>
+                    </GRUPOS_ACTIVIDAD>
+                </ACTIVIDAD>
+                <ACTIVIDAD num_act="20" num_un="943">
+                    <TRAMO>5</TRAMO>
+                    <ASIGNATURA>75</ASIGNATURA>
+                    <AULA>1</AULA>
+                    <GRUPOS_ACTIVIDAD tot_gr_act="1">
+                        <GRUPO>22</GRUPO>
+                    </GRUPOS_ACTIVIDAD>
+                </ACTIVIDAD>
+                <ACTIVIDAD num_act="21" num_un="945">
+                    <TRAMO>41</TRAMO>
+                    <ASIGNATURA>75</ASIGNATURA>
+                    <AULA>1</AULA>
+                    <GRUPOS_ACTIVIDAD tot_gr_act="1">
+                        <GRUPO>22</GRUPO>
+                    </GRUPOS_ACTIVIDAD>
+                </ACTIVIDAD>
+                <ACTIVIDAD num_act="22" num_un="1030">
+                    <TRAMO>39</TRAMO>
+                    <ASIGNATURA>218</ASIGNATURA>
+                    <AULA>18</AULA>
+                    <GRUPOS_ACTIVIDAD tot_gr_act="1">
+                        <GRUPO>1</GRUPO>
+                    </GRUPOS_ACTIVIDAD>
+                </ACTIVIDAD>
+                <ACTIVIDAD num_act="23" num_un="1031">
+                    <TRAMO>19</TRAMO>
+                    <ASIGNATURA>218</ASIGNATURA>
+                    <AULA>18</AULA>
+                    <GRUPOS_ACTIVIDAD tot_gr_act="1">
+                        <GRUPO>1</GRUPO>
+                    </GRUPOS_ACTIVIDAD>
+                </ACTIVIDAD>
+                <ACTIVIDAD num_act="24" num_un="1032">
+                    <TRAMO>1</TRAMO>
+                    <ASIGNATURA>218</ASIGNATURA>
+                    <AULA>18</AULA>
+                    <GRUPOS_ACTIVIDAD tot_gr_act="1">
+                        <GRUPO>1</GRUPO>
+                    </GRUPOS_ACTIVIDAD>
+                </ACTIVIDAD>
+                <ACTIVIDAD num_act="25" num_un="1047">
+                    <TRAMO>25</TRAMO>
+                    <ASIGNATURA>227</ASIGNATURA>
+                    <AULA>12</AULA>
+                    <GRUPOS_ACTIVIDAD tot_gr_act="1">
+                        <GRUPO>30</GRUPO>
+                    </GRUPOS_ACTIVIDAD>
+                </ACTIVIDAD>
+            </HORARIO_PROF>
+        </HORARIOS_PROFESORES>
+    </HORARIOS>
+</CENTRO>
