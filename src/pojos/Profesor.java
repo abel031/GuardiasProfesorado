@@ -20,7 +20,7 @@ public class Profesor implements Serializable{
 	private String abreviatura;
 	private String nombre;
 	private String nivel;
-	private Integer codigo;
+	private String codigo;
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="num_usuario")
 	private Usuario usuario;
@@ -30,7 +30,7 @@ public class Profesor implements Serializable{
 	public Profesor() {
 	}
 
-	public Profesor(Integer numProfesor, String abreviatura, String nombre, String nivel, Integer codigo,
+	public Profesor(Integer numProfesor, String abreviatura, String nombre, String nivel, String codigo,
 			Usuario usuario, List<Actividad> actividades) {
 		this.numProfesor = numProfesor;
 		this.abreviatura = abreviatura;
@@ -73,11 +73,11 @@ public class Profesor implements Serializable{
 		this.nivel = nivel;
 	}
 	
-	public Integer getCodigo() {
+	public String getCodigo() {
 		return codigo;
 	}
 	
-	public void setCodigo(Integer codigo) {
+	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
 	
