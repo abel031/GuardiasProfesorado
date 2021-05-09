@@ -23,14 +23,14 @@ public class Grupo implements Serializable{
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="num_tutor")
 	private Profesor tutor;
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "actividad")
-	private List<Actividad> actividades;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "grupoactividad")
+	private List<GrupoActividad> actividades;
 	
 	public Grupo() {
 	}
 	
 	public Grupo(Integer numGrupo, String abreviatura, String nombre, String codigo, Profesor tutor,
-			List<Actividad> actividades) {
+			List<GrupoActividad> actividades) {
 		this.numGrupo = numGrupo;
 		this.abreviatura = abreviatura;
 		this.nombre = nombre;
@@ -79,11 +79,11 @@ public class Grupo implements Serializable{
 		this.tutor = tutor;
 	}
 	
-	public List<Actividad> getActividades() {
+	public List<GrupoActividad> getActividades() {
 		return actividades;
 	}
 
-	public void setActividades(List<Actividad> actividades) {
+	public void setActividades(List<GrupoActividad> actividades) {
 		this.actividades = actividades;
 	}
 

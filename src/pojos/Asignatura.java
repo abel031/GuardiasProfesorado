@@ -21,7 +21,7 @@ public class Asignatura implements Serializable{
 	private String nivel;
 	private String codigo;
 	private String curso;
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "actiidad" )
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "actividad" )
 	private List<Actividad> actividades;
 	
 	public Asignatura() {

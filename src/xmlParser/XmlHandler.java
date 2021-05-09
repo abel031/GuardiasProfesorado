@@ -1,7 +1,10 @@
 package xmlParser;
 
 
+import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -12,6 +15,7 @@ import pojos.Aula;
 import pojos.Grupo;
 import pojos.Profesor;
 import pojos.RelProfeGrupo;
+import pojos.TramoHorario;
 
 public class XmlHandler extends DefaultHandler{
 	
@@ -38,7 +42,7 @@ public class XmlHandler extends DefaultHandler{
 	private Aula classroom;
 	private ArrayList<Aula> classrooms = new ArrayList<Aula>();
 	
-	//PRofesor
+	//Profesor
 	private boolean profes, profe, ngru;
 	private Integer numProfesor;
 	private String nGrupo;
@@ -46,6 +50,13 @@ public class XmlHandler extends DefaultHandler{
 	private ArrayList<Profesor> profesores = new ArrayList<Profesor>();
 	private RelProfeGrupo relPG;
 	private ArrayList<RelProfeGrupo> relsPG = new ArrayList<RelProfeGrupo>();
+	
+	//TramoHorario
+	private boolean tramos, tramo, numDia, numH, hInicio, hFinal;
+	private Integer numTramoHorario, nDia, nHora;
+	private Time horaI, horaF;
+	private TramoHorario tramoHora;
+	private ArrayList<TramoHorario> tramosHorarios = new ArrayList<TramoHorario>();
 	
 	@Override
 	public void startDocument() throws SAXException {
@@ -111,6 +122,20 @@ public class XmlHandler extends DefaultHandler{
 			if(qName.equals("CODIGO")) code = true;
 			if(qName.equals("NUM_GR_TUTORIA_PRINCIPAL")) ngru = true;
 		}
+		
+		//TramoHorario
+		if(qName.equals("TRAMOS_HORARIOS")) tramos = true;
+		if(qName.equals("TRAMO") && tramos) {
+			tramo = true;
+			numTramoHorario = Integer.parseInt(attributes.getValue(0));
+		}
+		if(tramo) {
+			if(qName.equals("CODIGO")) code = true;
+			if(qName.equals("NUMERO_DIA")) numDia = true;
+			if(qName.equals("NUMERO_HORA")) numH = true;
+			if(qName.equals("HORA_INICIO")) hInicio = true;
+			if(qName.equals("HORA_FINAL")) hFinal = true;			
+		}
 	}
 	
 	@Override
@@ -158,21 +183,36 @@ public class XmlHandler extends DefaultHandler{
 		}
 		
 		//Profesor
-				if(qName.equals("PROFESORES")) profes = false;
-				if(qName.equals("PROFESOR") && profes) {
-					profe = false;
-					profesor = new Profesor(numProfesor, abreviatura, nombre, nivel, codigo, null, null);
-					profesores.add(profesor);
-					relPG = new RelProfeGrupo(numProfesor, nGrupo);
-					relsPG.add(relPG);
-				}
-				if(profe) {
-					if(qName.equals("ABREVIATURA")) abre = false;
-					if(qName.equals("NOMBRE")) nom = false;
-					if(qName.equals("NIVEL")) lv = false;
-					if(qName.equals("CODIGO")) code = false;
-					if(qName.equals("NUM_GR_TUTORIA_PRINCIPAL")) ngru = false;
-				}
+		if(qName.equals("PROFESORES")) profes = false;
+		if(qName.equals("PROFESOR") && profes) {
+			profe = false;
+			profesor = new Profesor(numProfesor, abreviatura, nombre, nivel, codigo, null, null);
+			profesores.add(profesor);
+			relPG = new RelProfeGrupo(numProfesor, nGrupo);
+			relsPG.add(relPG);
+		}
+		if(profe) {
+			if(qName.equals("ABREVIATURA")) abre = false;
+			if(qName.equals("NOMBRE")) nom = false;
+			if(qName.equals("NIVEL")) lv = false;
+			if(qName.equals("CODIGO")) code = false;
+			if(qName.equals("NUM_GR_TUTORIA_PRINCIPAL")) ngru = false;
+		}
+			
+		//TramoHorario
+		if(qName.equals("TRAMOS_HORARIOS")) tramos = false;
+		if(qName.equals("TRAMO") && tramos) {
+			tramo = false;
+			tramoHora = new TramoHorario(numTramoHorario, Integer.parseInt(codigo), nDia, nHora, horaI, horaF, null);
+			tramosHorarios.add(tramoHora);
+		}
+		if(tramo) {
+			if(qName.equals("CODIGO")) code = false;
+			if(qName.equals("NUMERO_DIA")) numDia = false;
+			if(qName.equals("NUMERO_HORA")) numH = false;
+			if(qName.equals("HORA_INICIO")) hInicio = false;
+			if(qName.equals("HORA_FINAL")) hFinal = false;			
+		}
 	}
 
 	@Override
@@ -209,6 +249,27 @@ public class XmlHandler extends DefaultHandler{
 			if(code) codigo = new String(ch,start,length);
 			if(ngru) nGrupo = new String(ch,start,length);
 		}
+		
+		//TramoHorario
+		if(tramo) {
+			if(code) codigo = new String(ch,start,length);
+			if(numDia) nDia = Integer.parseInt(new String(ch,start,length));
+			if(numH) nHora = Integer.parseInt(new String(ch,start,length));
+			if(hInicio) horaI = timeTransformer(new String(ch,start+1,length-1));
+			if(hFinal) horaF = timeTransformer(new String(ch,start+1,length-1));
+		}
+	}
+	
+	private Time timeTransformer(String time) {
+		try {
+		    SimpleDateFormat format = new SimpleDateFormat("hh:mm");
+		    Date d1 =(Date)format.parse(time);
+		    Time ppstime = new Time(d1.getTime());
+		    return ppstime;
+		} catch(Exception e) {
+		    e.printStackTrace();
+		}
+		return null;
 	}
 	
 	public ArrayList<Asignatura> GetListaAsignaturas() {
@@ -229,6 +290,10 @@ public class XmlHandler extends DefaultHandler{
 	
 	public ArrayList<RelProfeGrupo> GetListaRelProfeGrupo() {
 		return relsPG;
+	}
+	
+	public ArrayList<TramoHorario> GetListaRelTramoHorario() {
+		return tramosHorarios;
 	}
 	
 }

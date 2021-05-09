@@ -1,6 +1,7 @@
 package pojos;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Actividad implements Serializable{
@@ -19,9 +21,6 @@ public class Actividad implements Serializable{
 	@JoinColumn(name="num_tramo")
 	private TramoHorario tramo;
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="num_grupo")
-	private Grupo grupo;
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="num_aula")
 	private Aula aula;
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -31,17 +30,20 @@ public class Actividad implements Serializable{
 	@JoinColumn(name="num_profesor")
 	private Profesor profesor;
 	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "grupoactividad" )
+	private List<GrupoActividad> grupos;
+	
 	public Actividad() {
 	}
 
-	public Actividad(Integer numActividad, TramoHorario tramo, Grupo grupo, Aula aula, Asignatura asignatura,
-			Profesor profesor) {
+	public Actividad(Integer numActividad, TramoHorario tramo, Aula aula, Asignatura asignatura, Profesor profesor,
+			List<GrupoActividad> grupos) {
 		this.numActividad = numActividad;
 		this.tramo = tramo;
-		this.grupo = grupo;
 		this.aula = aula;
 		this.asignatura = asignatura;
 		this.profesor = profesor;
+		this.grupos = grupos;
 	}
 
 	public Integer getNumActividad() {
@@ -58,14 +60,6 @@ public class Actividad implements Serializable{
 
 	public void setTramo(TramoHorario tramo) {
 		this.tramo = tramo;
-	}
-
-	public Grupo getGrupo() {
-		return grupo;
-	}
-
-	public void setGrupo(Grupo grupo) {
-		this.grupo = grupo;
 	}
 
 	public Aula getAula() {
@@ -92,13 +86,20 @@ public class Actividad implements Serializable{
 		this.profesor = profesor;
 	}
 
+	public List<GrupoActividad> getGrupos() {
+		return grupos;
+	}
+
+	public void setGrupos(List<GrupoActividad> grupos) {
+		this.grupos = grupos;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((asignatura == null) ? 0 : asignatura.hashCode());
 		result = prime * result + ((aula == null) ? 0 : aula.hashCode());
-		result = prime * result + ((grupo == null) ? 0 : grupo.hashCode());
 		result = prime * result + ((numActividad == null) ? 0 : numActividad.hashCode());
 		result = prime * result + ((profesor == null) ? 0 : profesor.hashCode());
 		result = prime * result + ((tramo == null) ? 0 : tramo.hashCode());
@@ -124,11 +125,6 @@ public class Actividad implements Serializable{
 				return false;
 		} else if (!aula.equals(other.aula))
 			return false;
-		if (grupo == null) {
-			if (other.grupo != null)
-				return false;
-		} else if (!grupo.equals(other.grupo))
-			return false;
 		if (numActividad == null) {
 			if (other.numActividad != null)
 				return false;
@@ -149,7 +145,7 @@ public class Actividad implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Actividad [numActividad=" + numActividad + ", tramo=" + tramo + ", grupo=" + grupo + ", aula=" + aula
+		return "Actividad [numActividad=" + numActividad + ", tramo=" + tramo + ", aula=" + aula
 				+ ", asignatura=" + asignatura + ", profesor=" + profesor + "]";
 	}
 }

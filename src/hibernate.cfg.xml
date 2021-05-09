@@ -35,6 +35,7 @@
 		<mapping class="pojos.Profesor"/>
 		<mapping class="pojos.TramoHorario"/>
 		<mapping class="pojos.Usuario"/>
+		<mapping class="pojos.GrupoActividad"/>
 		
 	</session-factory>
 </hibernate-configuration>

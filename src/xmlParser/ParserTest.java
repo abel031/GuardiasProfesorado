@@ -12,6 +12,7 @@ import pojos.Aula;
 import pojos.Grupo;
 import pojos.Profesor;
 import pojos.RelProfeGrupo;
+import pojos.TramoHorario;
 
 public class ParserTest {
 
@@ -39,6 +40,10 @@ public class ParserTest {
 		List<RelProfeGrupo> relsPG = handler.GetListaRelProfeGrupo();
 		for (RelProfeGrupo relProfeGrupo : relsPG) {
 			System.out.println(relProfeGrupo);
+		}
+		List<TramoHorario> tramosHorarios = handler.GetListaRelTramoHorario();
+		for (TramoHorario tramoHorario : tramosHorarios) {
+			System.out.println(tramoHorario);
 		}
 	}
 
