@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -15,7 +16,7 @@ import javax.persistence.OneToOne;
 public class Profesor implements Serializable{
 	
 	@Id
-	@JoinColumn(name = "num_profesor")
+	@Column(name = "num_profesor")
 	private Integer numProfesor;
 	private String abreviatura;
 	private String nombre;
@@ -24,7 +25,7 @@ public class Profesor implements Serializable{
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="num_usuario")
 	private Usuario usuario;
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "actividad")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "profesor")
 	private List<Actividad> actividades;
 	
 	public Profesor() {

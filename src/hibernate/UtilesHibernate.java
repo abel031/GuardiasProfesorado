@@ -4,8 +4,6 @@ package hibernate;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import pojos.Equipo;
-
 public class UtilesHibernate {
 	
 	private static SessionFactory SF;
@@ -47,7 +45,6 @@ public class UtilesHibernate {
 	    config.setProperty("hibernate.show_sql", "true");
 	    
 	     
-	    config.addAnnotatedClass(Equipo.class);
 	 
 	    SF = config.buildSessionFactory();
 	}

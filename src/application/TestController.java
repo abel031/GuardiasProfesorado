@@ -3,8 +3,6 @@ package application;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.TextField;
-import pojos.Equipo;
-
 import java.util.List;
 
 import org.hibernate.Session;
@@ -28,13 +26,6 @@ public class TestController {
 		SessionFactory factory = util.getSessionFactory();
 		Session sesion = factory.getCurrentSession();
 		sesion.beginTransaction();
-		
-		Query q =sesion.createQuery("SELECT e FROM Equipo e");
-		List<Equipo> lista = (List<Equipo>) q.list();
-		
-		for (Equipo eq : lista) {
-			System.out.format("%-15s %s%n", eq.getNombre(),eq.getDirector());
-		}
 		
 		sesion.getTransaction().commit();
 	}

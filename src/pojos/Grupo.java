@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -15,7 +16,7 @@ import javax.persistence.OneToOne;
 public class Grupo implements Serializable{
 	
 	@Id
-	@JoinColumn(name = "num_grupo")
+	@Column(name = "num_grupo")
 	private Integer numGrupo;
 	private String abreviatura;
 	private String nombre;
@@ -23,7 +24,7 @@ public class Grupo implements Serializable{
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="num_tutor")
 	private Profesor tutor;
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "grupoactividad")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "grupo")
 	private List<GrupoActividad> actividades;
 	
 	public Grupo() {

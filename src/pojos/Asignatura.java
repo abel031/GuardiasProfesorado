@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -14,14 +15,14 @@ import javax.persistence.OneToMany;
 public class Asignatura implements Serializable{
 	
 	@Id
-	@JoinColumn(name="num_asignatura")
+	@Column(name="num_asignatura")
 	private Integer numAsignatura;
 	private String abreviatura;
 	private String nombre;
 	private String nivel;
 	private String codigo;
 	private String curso;
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "actividad" )
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "asignatura" )
 	private List<Actividad> actividades;
 	
 	public Asignatura() {

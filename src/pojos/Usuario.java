@@ -2,19 +2,22 @@ package pojos;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 
-@Entity
+@Entity (name = "usuarios")
 public class Usuario implements Serializable{
 	
 	@Id
-	@JoinColumn(name ="num_usuario")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name ="num_usuario")
 	private Integer numUsuario;
 	private String usuario;
 	private String passwd;
-	@JoinColumn(name="tipo_usuario")
+	@Column(name="tipo_usuario")
 	private Integer tipoUsuario;
 	
 	public Usuario() {

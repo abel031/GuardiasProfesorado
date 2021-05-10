@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -15,7 +16,7 @@ import javax.persistence.OneToMany;
 public class Actividad implements Serializable{
 	
 	@Id
-	@JoinColumn(name="num_actividad")
+	@Column(name="num_actividad")
 	private Integer numActividad;
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="num_tramo")
@@ -30,7 +31,7 @@ public class Actividad implements Serializable{
 	@JoinColumn(name="num_profesor")
 	private Profesor profesor;
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "grupoactividad" )
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "actividad" )
 	private List<GrupoActividad> grupos;
 	
 	public Actividad() {
