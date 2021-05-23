@@ -58,6 +58,9 @@ public class XmlHandler extends DefaultHandler{
 	private TramoHorario tramoHora;
 	private ArrayList<TramoHorario> tramosHorarios = new ArrayList<TramoHorario>();
 	
+	//Actividad
+	
+	
 	@Override
 	public void startDocument() throws SAXException {
 		System.out.println("Inicio del Analisis");
