@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Entity
+@Entity (name = "grupoactividad")
 public class GrupoActividad implements Serializable{
 	@Id
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)

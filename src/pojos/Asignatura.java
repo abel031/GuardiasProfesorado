@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
-@Entity
+@Entity (name = "asignatura")
 public class Asignatura implements Serializable{
 	
 	@Id
