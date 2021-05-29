@@ -14,6 +14,7 @@ import pojos.Asignatura;
 import pojos.Aula;
 import pojos.Grupo;
 import pojos.Profesor;
+import pojos.RelActividad;
 import pojos.RelProfeGrupo;
 import pojos.TramoHorario;
 
@@ -59,7 +60,11 @@ public class XmlHandler extends DefaultHandler{
 	private ArrayList<TramoHorario> tramosHorarios = new ArrayList<TramoHorario>();
 	
 	//Actividad
-	
+	private boolean pros, pro, act, tra, asign, aul, ga, gru;
+	private Integer numActividad, nProfe, nTramo, nAsig, nAula, nGru;
+	private ArrayList<Integer> grus = new ArrayList<Integer>();
+	private RelActividad relAct;
+	private ArrayList<RelActividad> relActs = new ArrayList<RelActividad>();
 	
 	@Override
 	public void startDocument() throws SAXException {
@@ -139,6 +144,30 @@ public class XmlHandler extends DefaultHandler{
 			if(qName.equals("HORA_INICIO")) hInicio = true;
 			if(qName.equals("HORA_FINAL")) hFinal = true;			
 		}
+		
+		//Actividad
+		if(qName.equals("HORARIOS_PROFESORES")) pros = true;
+		if(pros) {
+			if(qName.equals("HORARIO_PROF")) {
+				pro = true;
+				nProfe = Integer.parseInt(attributes.getValue(0));
+			}
+			if(pro) {
+				if(qName.equals("ACTIVIDAD")) {
+					act = true;
+					numActividad = Integer.parseInt(attributes.getValue(1));
+				}
+				if(act) {
+					if(qName.equals("TRAMO")) tra = true;
+					if(qName.equals("ASIGNATURA")) asign = true;
+					if(qName.equals("AULA")) aul = true;
+					if(qName.equals("GRUPOS_ACTIVIDAD")) ga =true;
+					if(ga) {
+						if(qName.equals("GRUPO")) gru = true;
+					}
+				}
+			}
+		}
 	}
 	
 	@Override
@@ -216,6 +245,36 @@ public class XmlHandler extends DefaultHandler{
 			if(qName.equals("HORA_INICIO")) hInicio = false;
 			if(qName.equals("HORA_FINAL")) hFinal = false;			
 		}
+		
+		//Actividad
+		if(qName.equals("HORARIOS_PROFESORES")) pros = false;
+		if(pros) {
+			if(qName.equals("HORARIO_PROF")) {
+				pro = false;
+			}
+			if(pro) {
+				if(qName.equals("ACTIVIDAD")) {
+					act = false;
+					relAct = new RelActividad(numActividad, nTramo, nAula, nAsig, nProfe, grus);
+					relActs.add(relAct);
+					grus = new ArrayList<Integer>();
+				}
+				if(act) {
+					if(qName.equals("TRAMO")) tra = false;
+					if(qName.equals("ASIGNATURA")) asign = false;
+					if(qName.equals("AULA")) aul = false;
+					if(qName.equals("GRUPOS_ACTIVIDAD")) {
+						ga =false;
+					}
+					if(ga) {
+						if(qName.equals("GRUPO")) {
+							gru = false;
+							grus.add(nGru);
+						}
+					}
+				}
+			}
+		}
 	}
 
 	@Override
@@ -261,6 +320,23 @@ public class XmlHandler extends DefaultHandler{
 			if(hInicio) horaI = timeTransformer(new String(ch,start+1,length-1));
 			if(hFinal) horaF = timeTransformer(new String(ch,start+1,length-1));
 		}
+		
+		//Actividad
+		if(pros) {
+			if(pro) {
+				if(act) {
+					if(tra) nTramo = Integer.parseInt(new String(ch,start,length));
+					if(asign) nAsig = Integer.parseInt(new String(ch,start,length));
+					if(aul) nAula = Integer.parseInt(new String(ch,start,length));
+					if(ga) {
+						if(gru) {
+							nGru =  Integer.parseInt(new String(ch,start,length));
+						}
+						
+					}
+				}
+			}
+		}
 	}
 	
 	private Time timeTransformer(String time) {
@@ -299,4 +375,7 @@ public class XmlHandler extends DefaultHandler{
 		return tramosHorarios;
 	}
 	
+	public ArrayList<RelActividad> GetListaRelActividad() {
+		return relActs;
+	}
 }

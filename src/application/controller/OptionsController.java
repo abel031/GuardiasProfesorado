@@ -18,6 +18,10 @@ import javafx.event.ActionEvent;
 public class OptionsController {
 	@FXML
 	private TextField file;
+	@FXML
+	private TextField TFActualPwd;
+	@FXML
+	private TextField TFNewPwd;
 	
 	FileChooser fc = new FileChooser();
 	File selec;
@@ -39,4 +43,10 @@ public class OptionsController {
 	public void parse(ActionEvent event) {
 		parser.parse(selec);
 	}
+	
+	// Event Listener on Button.onAction
+		@FXML
+		public void ChangePwd(ActionEvent event) {
+			parser.parse(selec);
+		}
 }
