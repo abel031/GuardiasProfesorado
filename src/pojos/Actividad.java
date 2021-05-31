@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity (name = "actividad")
 public class Actividad implements Serializable{
@@ -39,6 +40,9 @@ public class Actividad implements Serializable{
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="num_profesor")
 	private Profesor profesor;
+	
+	@OneToOne(mappedBy = "actividad")
+	private Guardia guardia;
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "actividad" )
 	private List<GrupoActividad> grupos;

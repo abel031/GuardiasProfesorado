@@ -28,6 +28,9 @@ public class Profesor implements Serializable{
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "profesor")
 	private List<Actividad> actividades;
 	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sustituto")
+	private List<Guardia> guardias;
+	
 	public Profesor() {
 	}
 
