@@ -16,8 +16,9 @@
         <menus>
           <Menu mnemonicParsing="false" text="Usuario">
             <items>
-                  <MenuItem mnemonicParsing="false" onAction="#LogOut" text="Cerrar Sesion" />
+                  <MenuItem mnemonicParsing="false" onAction="#opciones" text="Opciones" />
               <MenuItem mnemonicParsing="false" onAction="#Exit" text="Salir" />
+                  <MenuItem mnemonicParsing="false" onAction="#LogOut" text="Cerrar Sesion" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Guardias">

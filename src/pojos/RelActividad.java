@@ -5,12 +5,13 @@ import java.util.List;
 public class RelActividad {
 
 	private int numActividad;
+	private int numUn;
 	private int numTramo;
 	private int numAula;
 	private int numAsignatura;
 	private int numProfesor;
 	private List<Integer> grupos;
-	public RelActividad(int numActividad, int numTramo, int numAula, int numAsignatura, int numProfesor,
+	public RelActividad(int numActividad, int numTramo, int numAula, int numAsignatura, int numProfesor,int numUn,
 			List<Integer> grupos) {
 		this.numActividad = numActividad;
 		this.numTramo = numTramo;
@@ -18,6 +19,7 @@ public class RelActividad {
 		this.numAsignatura = numAsignatura;
 		this.numProfesor = numProfesor;
 		this.grupos = grupos;
+		this.numUn = numUn;
 	}
 	public int getNumActividad() {
 		return numActividad;
@@ -55,11 +57,19 @@ public class RelActividad {
 	public void setGrupos(List<Integer> grupos) {
 		this.grupos = grupos;
 	}
+	public int getNumUn() {
+		return numUn;
+	}
+	public void setNumUn(int numUn) {
+		this.numUn = numUn;
+	}
 	@Override
 	public String toString() {
-		return "RelActividad [numActividad=" + numActividad + ", numTramo=" + numTramo + ", numAula=" + numAula
-				+ ", numAsignatura=" + numAsignatura + ", numProfesor=" + numProfesor + ", grupos=" + grupos + "]";
+		return "RelActividad [numActividad=" + numActividad + ", numUn=" + numUn + ", numTramo=" + numTramo
+				+ ", numAula=" + numAula + ", numAsignatura=" + numAsignatura + ", numProfesor=" + numProfesor
+				+ ", grupos=" + grupos + "]";
 	}
+	
 	
 
 }

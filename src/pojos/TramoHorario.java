@@ -2,6 +2,7 @@ package pojos;
 
 import java.io.Serializable;
 import java.sql.Time;
+import java.time.LocalTime;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -26,17 +27,17 @@ public class TramoHorario implements Serializable{
 	@Column(name="numero_hora")
 	private Integer numeroHora;
 	@Column(name="hora_inicio")
-	private Time horaInicio;
+	private LocalTime horaInicio;
 	@Column(name="hora_final")
-	private Time horaFinal;
+	private LocalTime horaFinal;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "tramo")
 	private List<Actividad> actividades;
 	
 	public TramoHorario() {
 	}
 
-	public TramoHorario(Integer numTramo, Integer codigo, Integer numeroDia, Integer numeroHora, Time horaInicio,
-			Time horaFinal, List<Actividad> actividades) {
+	public TramoHorario(Integer numTramo, Integer codigo, Integer numeroDia, Integer numeroHora, LocalTime horaInicio,
+			LocalTime horaFinal, List<Actividad> actividades) {
 		this.numTramo = numTramo;
 		this.codigo = codigo;
 		this.numeroDia = numeroDia;
@@ -78,19 +79,19 @@ public class TramoHorario implements Serializable{
 		this.numeroHora = numeroHora;
 	}
 
-	public Time getHoraInicio() {
+	public LocalTime getHoraInicio() {
 		return horaInicio;
 	}
 
-	public void setHoraInicio(Time horaInicio) {
+	public void setHoraInicio(LocalTime horaInicio) {
 		this.horaInicio = horaInicio;
 	}
 
-	public Time getHoraFinal() {
+	public LocalTime getHoraFinal() {
 		return horaFinal;
 	}
 
-	public void setHoraFinal(Time horaFinal) {
+	public void setHoraFinal(LocalTime horaFinal) {
 		this.horaFinal = horaFinal;
 	}
 

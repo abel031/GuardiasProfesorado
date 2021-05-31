@@ -11,6 +11,6 @@
 	<classpathentry exported="true" kind="lib" path="references/driver/commons-pool2-2.7.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="references/driver/mysql-connector-java-5.1.41-bin.jar"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/hibernate5.4"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/javaFX"/>
+	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

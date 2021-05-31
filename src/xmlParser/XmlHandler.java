@@ -2,7 +2,9 @@ package xmlParser;
 
 
 import java.sql.Time;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -55,13 +57,13 @@ public class XmlHandler extends DefaultHandler{
 	//TramoHorario
 	private boolean tramos, tramo, numDia, numH, hInicio, hFinal;
 	private Integer numTramoHorario, nDia, nHora;
-	private Time horaI, horaF;
+	private LocalTime horaI, horaF;
 	private TramoHorario tramoHora;
 	private ArrayList<TramoHorario> tramosHorarios = new ArrayList<TramoHorario>();
 	
 	//Actividad
 	private boolean pros, pro, act, tra, asign, aul, ga, gru;
-	private Integer numActividad, nProfe, nTramo, nAsig, nAula, nGru;
+	private Integer numActividad, nProfe, nTramo, nAsig, nAula, nGru, numUn;
 	private ArrayList<Integer> grus = new ArrayList<Integer>();
 	private RelActividad relAct;
 	private ArrayList<RelActividad> relActs = new ArrayList<RelActividad>();
@@ -155,7 +157,8 @@ public class XmlHandler extends DefaultHandler{
 			if(pro) {
 				if(qName.equals("ACTIVIDAD")) {
 					act = true;
-					numActividad = Integer.parseInt(attributes.getValue(1));
+					numUn = Integer.parseInt(attributes.getValue(1));
+					numActividad = Integer.parseInt(attributes.getValue(0));
 				}
 				if(act) {
 					if(qName.equals("TRAMO")) tra = true;
@@ -255,7 +258,7 @@ public class XmlHandler extends DefaultHandler{
 			if(pro) {
 				if(qName.equals("ACTIVIDAD")) {
 					act = false;
-					relAct = new RelActividad(numActividad, nTramo, nAula, nAsig, nProfe, grus);
+					relAct = new RelActividad(numActividad, nTramo, nAula, nAsig, nProfe, numUn, grus);
 					relActs.add(relAct);
 					grus = new ArrayList<Integer>();
 				}
@@ -317,8 +320,8 @@ public class XmlHandler extends DefaultHandler{
 			if(code) codigo = new String(ch,start,length);
 			if(numDia) nDia = Integer.parseInt(new String(ch,start,length));
 			if(numH) nHora = Integer.parseInt(new String(ch,start,length));
-			if(hInicio) horaI = timeTransformer(new String(ch,start+1,length-1));
-			if(hFinal) horaF = timeTransformer(new String(ch,start+1,length-1));
+			if(hInicio) horaI = timeTransformer(new String(ch,start,length));
+			if(hFinal) horaF = timeTransformer(new String(ch,start,length));
 		}
 		
 		//Actividad
@@ -339,12 +342,11 @@ public class XmlHandler extends DefaultHandler{
 		}
 	}
 	
-	private Time timeTransformer(String time) {
+	private LocalTime timeTransformer(String time) {
 		try {
-		    SimpleDateFormat format = new SimpleDateFormat("hh:mm");
-		    Date d1 =(Date)format.parse(time);
-		    Time ppstime = new Time(d1.getTime());
-		    return ppstime;
+				String tf = time.replace(' ', '0');
+			LocalTime hora = LocalTime.parse(tf);
+			return hora;
 		} catch(Exception e) {
 		    e.printStackTrace();
 		}

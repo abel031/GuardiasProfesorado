@@ -6,28 +6,44 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 
 @Entity (name = "grupoactividad")
 public class GrupoActividad implements Serializable{
+	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Integer Id;
+	
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="numGrupo")
 	private Grupo grupo;
 	
-	@Id
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="numGrupo")
+	@JoinColumn(name="IdActividad")
 	private Actividad actividad;
 
 	public GrupoActividad() {
 	}
 
-	public GrupoActividad(Grupo grupo, Actividad actividad) {
+	public GrupoActividad(Integer id,Grupo grupo, Actividad actividad) {
+		this.Id = id;
 		this.grupo = grupo;
 		this.actividad = actividad;
+	}
+	
+	public Integer getId() {
+		return Id;
+	}
+
+	public void setId(Integer id) {
+		Id = id;
 	}
 
 	public Grupo getGrupo() {
@@ -50,6 +66,7 @@ public class GrupoActividad implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((Id == null) ? 0 : Id.hashCode());
 		result = prime * result + ((actividad == null) ? 0 : actividad.hashCode());
 		result = prime * result + ((grupo == null) ? 0 : grupo.hashCode());
 		return result;
@@ -64,6 +81,11 @@ public class GrupoActividad implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		GrupoActividad other = (GrupoActividad) obj;
+		if (Id == null) {
+			if (other.Id != null)
+				return false;
+		} else if (!Id.equals(other.Id))
+			return false;
 		if (actividad == null) {
 			if (other.actividad != null)
 				return false;
@@ -79,7 +101,8 @@ public class GrupoActividad implements Serializable{
 
 	@Override
 	public String toString() {
-		return "GrupoActividad [grupo=" + grupo + ", actividad=" + actividad + "]";
+		return "GrupoActividad [Id=" + Id + ", grupo=" + grupo + ", actividad=" + actividad + "]";
 	}
+
 
 }

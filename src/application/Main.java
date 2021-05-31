@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
 import application.controller.LoginController;
+import application.controller.MainViewController;
 import application.controller.OptionsController;
 import hibernate.UtilesHibernate;
 import javafx.application.Application;
@@ -23,44 +24,110 @@ public class Main extends Application {
 	
 	private Stage LoginStage;
 	private Stage OptionsStage;
+	private Stage MainView;
+	private Usuario user;
 	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			//BorderPane root = new BorderPane();
+			this.LoginStage = new Stage();
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation((getClass().getResource("view/Login.fxml")));
 			Parent root = loader.load();
-			Scene scene = new Scene(root,800,600);
-			primaryStage.setScene(scene);
-			primaryStage.setTitle("Login");
+			Scene scene = new Scene(root);
+			LoginStage.setScene(scene);
+			LoginStage.setTitle("Login");
 			LoginController controller = loader.getController();
 			controller.setGestorVentanas(this);
-			primaryStage.show();
+			LoginStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public void muestraOptions(){
+	public void muestraLogin(){
         
         try{
-            this.OptionsStage = new Stage();
+            this.LoginStage = new Stage();
 
             FXMLLoader loader = new FXMLLoader();        
-            loader.setLocation(getClass().getResource("view/Options.fxml"));
+            loader.setLocation(getClass().getResource("view/Login.fxml"));
 
             BorderPane borde = (BorderPane) loader.load();
             Scene scene = new Scene(borde);
-            this.OptionsStage.setTitle("Options");
-            this.OptionsStage.setScene(scene);
-            OptionsController controler = loader.getController();
+            this.LoginStage.setTitle("Login");
+            this.LoginStage.setScene(scene);
+            LoginController controler = loader.getController();
+            controler.setGestorVentanas(this);
+            
+            if(this.MainView != null) {
+            	this.MainView.close();
+            }
 
-            this.OptionsStage.show();
+            this.LoginStage.show();
         }catch(IOException ioe){
             ioe.printStackTrace();
         }
     }
+	
+	public void muestraOptions(){
+	        try{
+	            this.OptionsStage = new Stage();
+	
+	            FXMLLoader loader = new FXMLLoader();        
+	            loader.setLocation(getClass().getResource("view/Options.fxml"));
+	
+	            BorderPane borde = (BorderPane) loader.load();
+	            Scene scene = new Scene(borde);
+	            this.OptionsStage.setTitle("Options");
+	            this.OptionsStage.setScene(scene);
+	            OptionsController controler = loader.getController();
+	            controler.setGestorVentanas(this);
+	
+	            this.OptionsStage.show();
+	        }catch(IOException ioe){
+	            ioe.printStackTrace();
+	        }
+    }
+	
+	public void muestraPrincipal() {
+		try{
+            this.MainView = new Stage();
+
+            FXMLLoader loader = new FXMLLoader();        
+            loader.setLocation(getClass().getResource("view/MainView.fxml"));
+
+            BorderPane borde = (BorderPane) loader.load();
+            Scene scene = new Scene(borde);
+            this.MainView.setTitle("Guardias");
+            this.MainView.setScene(scene);
+            MainViewController controler = loader.getController();
+            controler.setGestorVentanas(this);
+            
+            if(this.LoginStage != null) {
+            	this.LoginStage.close();
+            }
+            if(this.OptionsStage != null) {
+            	this.OptionsStage.close();
+            }
+            
+            this.MainView.show();
+        }catch(IOException ioe){
+            ioe.printStackTrace();
+        }
+	}
+	
+	public void closeOptions() {
+		this.OptionsStage.close();
+	}
+	
+	public void setUsuario(Usuario usr) {
+		this.user = usr;
+	}
+	
+	public Usuario getUsuario() {
+		return this.user;
+	}
 	
 	public static void main(String[] args) {
 		SessionFactory SF = UtilesHibernate.getSessionFactory();
@@ -82,6 +149,7 @@ public class Main extends Application {
 			session.save(us);
 		}
 		session.getTransaction().commit();
+		session.close();
 		
 		launch(args);
 	}
