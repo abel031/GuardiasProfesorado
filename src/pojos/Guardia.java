@@ -2,6 +2,7 @@ package pojos;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.*;
 
@@ -14,7 +15,7 @@ public class Guardia implements Serializable{
 	private Integer numGuardia;
 	
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="profesor_sustituo")
+	@JoinColumn(name="profesor_sustituto")
 	private Profesor sustituto;
 	
 	@OneToOne
@@ -24,18 +25,18 @@ public class Guardia implements Serializable{
 	@Column(name ="tieneTrabajo")
 	private Boolean trabajo;
 	
-	@Column(name="trabajo")
+	@Column(name="tabajo")
 	private String trabajoList;
 	
 	@Column(name="dia")
-	private Date dia;
+	private LocalDate dia;
 
 	public Guardia() {
 		super();
 	}
 
 	public Guardia(Integer numGuardia, Profesor sustituto, Actividad actividad, Boolean trabajo, String trabajoList,
-			Date dia) {
+			LocalDate dia) {
 		super();
 		this.numGuardia = numGuardia;
 		this.sustituto = sustituto;
@@ -85,11 +86,11 @@ public class Guardia implements Serializable{
 		this.trabajoList = trabajoList;
 	}
 
-	public Date getDia() {
+	public LocalDate getDia() {
 		return dia;
 	}
 
-	public void setDia(Date dia) {
+	public void setDia(LocalDate dia) {
 		this.dia = dia;
 	}
 

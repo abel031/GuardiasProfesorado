@@ -23,7 +23,7 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Guardias">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#Guardia" text="Añadir Guardia" />
+              <MenuItem mnemonicParsing="false" onAction="#Guardia" text="Gestion Guardia" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Ayuda">

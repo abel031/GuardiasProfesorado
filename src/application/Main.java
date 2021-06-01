@@ -7,6 +7,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
+import application.controller.GuardiaController;
+import application.controller.ListaGuardiasController;
 import application.controller.LoginController;
 import application.controller.MainViewController;
 import application.controller.OptionsController;
@@ -15,6 +17,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import pojos.Usuario;
+import pojos.Guardia;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -25,7 +28,10 @@ public class Main extends Application {
 	private Stage LoginStage;
 	private Stage OptionsStage;
 	private Stage MainView;
+	private Stage Guardia;
+	private Stage ListaGuardia;
 	private Usuario user;
+	private Guardia gaurdia;
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -90,6 +96,31 @@ public class Main extends Application {
 	        }
     }
 	
+	public void muestraGuardia() {
+		try{
+            this.Guardia = new Stage();
+
+            FXMLLoader loader = new FXMLLoader();        
+            loader.setLocation(getClass().getResource("view/GuardiaView.fxml"));
+
+            BorderPane borde = (BorderPane) loader.load();
+            Scene scene = new Scene(borde);
+            this.Guardia.setTitle("Lista Guardias");
+            this.Guardia.setScene(scene);
+            GuardiaController controler = loader.getController();
+            controler.setGestorVentanas(this);
+            controler.setGuardia(gaurdia);
+            
+            if(ListaGuardia != null) {
+            	ListaGuardia.close();
+            }
+            
+            this.Guardia.show();
+        }catch(IOException ioe){
+            ioe.printStackTrace();
+        }
+	}
+	
 	public void muestraPrincipal() {
 		try{
             this.MainView = new Stage();
@@ -117,6 +148,30 @@ public class Main extends Application {
         }
 	}
 	
+	public void muestraLista() {
+		try{
+            this.ListaGuardia = new Stage();
+
+            FXMLLoader loader = new FXMLLoader();        
+            loader.setLocation(getClass().getResource("view/ListaGuardiasView.fxml"));
+
+            BorderPane borde = (BorderPane) loader.load();
+            Scene scene = new Scene(borde);
+            this.ListaGuardia.setTitle("Guardias");
+            this.ListaGuardia.setScene(scene);
+            ListaGuardiasController controler = loader.getController();
+            controler.setGestorVentanas(this);
+            
+            if(Guardia != null) {
+            	Guardia.close();
+            }
+            
+            this.ListaGuardia.show();
+        }catch(IOException ioe){
+            ioe.printStackTrace();
+        }
+	}
+	
 	public void closeOptions() {
 		this.OptionsStage.close();
 	}
@@ -127,6 +182,14 @@ public class Main extends Application {
 	
 	public Usuario getUsuario() {
 		return this.user;
+	}
+	
+	public void setGuardia(Guardia guar) {
+		this.gaurdia = guar;
+	}
+	
+	public Guardia getGuardia() {
+		return gaurdia;
 	}
 	
 	public static void main(String[] args) {

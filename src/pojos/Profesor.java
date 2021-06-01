@@ -28,7 +28,7 @@ public class Profesor implements Serializable{
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "profesor")
 	private List<Actividad> actividades;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sustituto")
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy = "sustituto")
 	private List<Guardia> guardias;
 	
 	public Profesor() {
@@ -100,6 +100,14 @@ public class Profesor implements Serializable{
 	public void setActividades(List<Actividad> actividades) {
 		this.actividades = actividades;
 	}
+	
+	public List<Guardia> getGuardias() {
+		return guardias;
+	}
+
+	public void setGuardias(List<Guardia> guardias) {
+		this.guardias = guardias;
+	}
 
 	@Override
 	public int hashCode() {
@@ -108,12 +116,14 @@ public class Profesor implements Serializable{
 		result = prime * result + ((abreviatura == null) ? 0 : abreviatura.hashCode());
 		result = prime * result + ((actividades == null) ? 0 : actividades.hashCode());
 		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		result = prime * result + ((guardias == null) ? 0 : guardias.hashCode());
 		result = prime * result + ((nivel == null) ? 0 : nivel.hashCode());
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
 		result = prime * result + ((numProfesor == null) ? 0 : numProfesor.hashCode());
+		result = prime * result + ((usuario == null) ? 0 : usuario.hashCode());
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -138,6 +148,11 @@ public class Profesor implements Serializable{
 				return false;
 		} else if (!codigo.equals(other.codigo))
 			return false;
+		if (guardias == null) {
+			if (other.guardias != null)
+				return false;
+		} else if (!guardias.equals(other.guardias))
+			return false;
 		if (nivel == null) {
 			if (other.nivel != null)
 				return false;
@@ -153,9 +168,14 @@ public class Profesor implements Serializable{
 				return false;
 		} else if (!numProfesor.equals(other.numProfesor))
 			return false;
+		if (usuario == null) {
+			if (other.usuario != null)
+				return false;
+		} else if (!usuario.equals(other.usuario))
+			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Profesor [numProfesor=" + numProfesor + ", abreviatura=" + abreviatura + ", nombre=" + nombre

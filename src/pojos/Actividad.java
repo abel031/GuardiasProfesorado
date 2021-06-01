@@ -34,7 +34,7 @@ public class Actividad implements Serializable{
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="num_aula")
 	private Aula aula;
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name="num_asignatura")
 	private Asignatura asignatura;
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
